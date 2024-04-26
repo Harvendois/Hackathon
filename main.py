@@ -1,25 +1,19 @@
-class A:
-    def __init__(
-        self,
-    ) -> None:
-        print("A.__init__")
+#!/usr/bin/env python3
+# import frontend
+import uvicorn
+from fastapi import FastAPI
 
-    def fib(
-        self,
-        x: int,
-        y: int,
-    ) -> int:
-        if x <= 1:
-            return x
-        return self.fib(y, x + y)
+from frontend import init as frontend_init
 
-    def foo(
-        self,
-        x: float,
-    ) -> list[str]:
-        return [str(x)]
+app = FastAPI(root_path="/api")
 
-    def bar(
-        self,
-    ) -> tuple[str, str]:
-        return ("a", "b")
+
+@app.get("/health")
+def read_root() -> str:
+    return "OK"
+
+
+frontend_init(app)
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
