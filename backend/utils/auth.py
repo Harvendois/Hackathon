@@ -9,7 +9,7 @@ from jose import jwt
 from sqlalchemy import Select, select
 from sqlalchemy.orm import Session
 
-from backend.exceptions.login import UserNotFound
+from backend.exceptions.user import UserNotFound
 from backend.models.user import User
 from backend.schemas.user import JWTAuthenticateUser, UserCreateIn, UserIn
 from backend.settings.config import JWT_AUTH
@@ -43,7 +43,9 @@ def authenticate(
     db: Session,
     user_login_data: UserIn,
 ) -> User:
-    statement: Select = select(User).where(User.email == user_login_data.email)
+    statement: Select = select(User).where(
+        User.email == user_login_data.email, User.verified is True
+    )
 
     user: User = db.execute(statement).scalars().one_or_none()
 

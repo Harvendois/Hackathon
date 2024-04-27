@@ -10,18 +10,24 @@ from .base import UUIDBase
 
 if TYPE_CHECKING:
     from .company import Company
+    from .institute import Institute
 
 
 class Post(UUIDBase):
     __tablename__ = "posts"
     title: Mapped[str] = MappedColumn(String())
-    company_id: Mapped[UUID] = MappedColumn(
-        ForeignKey("companies.id", ondelete="CASCADE")
+    company_id: Mapped[UUID | None] = MappedColumn(
+        ForeignKey("companies.id", ondelete="CASCADE"), nullable=True
     )
     company: Mapped["Company"] = relationship(
         back_populates="posts",
     )
-
+    institute_id: Mapped[UUID | None] = MappedColumn(
+        ForeignKey("institutes.id", ondelete="CASCADE"), nullable=True
+    )
+    institute: Mapped["Institute"] = relationship(
+        back_populates="posts",
+    )
     start_dt: Mapped[datetime] = MappedColumn(postgresql.TIMESTAMP())
     end_dt: Mapped[datetime] = MappedColumn(postgresql.TIMESTAMP())
     type: Mapped[str] = MappedColumn(String())

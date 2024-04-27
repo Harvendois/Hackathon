@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 from uuid import uuid4
 
-from sqlalchemy import String
+from sqlalchemy import Boolean, String, false
 from sqlalchemy.orm import Mapped, MappedColumn, relationship
 
 from .base import UUIDBase
@@ -20,7 +20,7 @@ class User(UUIDBase):
     name: Mapped[str] = MappedColumn(String())
     email: Mapped[str] = MappedColumn(String(), unique=True)
     password: Mapped[str] = MappedColumn(String())
-
+    verified: Mapped[bool] = MappedColumn(Boolean(), server_default=false())
     student: Mapped["Student"] = relationship("Student", back_populates="user")
     institute: Mapped["Institute"] = relationship("Institute", back_populates="user")
     company: Mapped["Company"] = relationship("Company", back_populates="user")
