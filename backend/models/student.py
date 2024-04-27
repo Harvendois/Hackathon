@@ -9,6 +9,7 @@ from .base import UUIDBase
 __all__ = ["Student"]
 
 if TYPE_CHECKING:
+    from .post import Post
     from .user import User
 
 
@@ -23,6 +24,11 @@ class Student(UUIDBase):
     user: Mapped["User"] = relationship(
         back_populates="student",
         single_parent=True,
+    )
+
+    applications: Mapped["StudentApplication"] = relationship(
+        back_populates="student",
+        cascade="all, delete-orphan",
     )
 
     @classmethod
@@ -57,3 +63,22 @@ class Student(UUIDBase):
         self.major = major
         self.enrollment_cert = enrollment_cert
         self.student_id_card = student_id_card
+
+
+class StudentApplication(UUIDBase):
+    __tablename__ = "student_applications"
+
+    status: Mapped[str] = MappedColumn(String())
+    student_id: Mapped[UUID] = MappedColumn(
+        ForeignKey("students.id", ondelete="CASCADE")
+    )
+    student: Mapped[Student] = relationship(
+        back_populates="applications",
+        single_parent=True,
+    )
+
+    post_id: Mapped[UUID] = MappedColumn(ForeignKey("posts.id", ondelete="CASCADE"))
+    post: Mapped["Post"] = relationship(
+        back_populates="student_applications",
+        single_parent=True,
+    )
