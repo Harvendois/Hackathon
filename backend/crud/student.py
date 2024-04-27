@@ -1,6 +1,8 @@
 import bcrypt
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from backend.exceptions.user import EmailAlreadyTaken
 from backend.models.student import Student
 from backend.models.user import User
 from backend.schemas.student import StudentCreateIn
@@ -10,6 +12,15 @@ def create_student(
     db: Session,
     request_data: StudentCreateIn,
 ) -> Student:
+    # verify that email is not already taken
+    statement = select(User).where(User.email == request_data.email)
+    user = db.execute(statement).scalars().one_or_none()
+
+    if user:
+        raise EmailAlreadyTaken(
+            email=request_data.email,
+        )
+
     # first create a user
     user = User.create(
         name=request_data.name,

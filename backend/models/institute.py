@@ -9,6 +9,7 @@ from .base import UUIDBase
 __all__ = ["Institute"]
 
 if TYPE_CHECKING:
+    from .posts import Post
     from .user import User
 
 
@@ -23,6 +24,9 @@ class Institute(UUIDBase):
     user: Mapped["User"] = relationship(
         back_populates="institute",
         single_parent=True,
+    )
+    posts: Mapped[list["Post"]] = relationship(
+        back_populates="institute",
     )
 
     @classmethod
