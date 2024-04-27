@@ -11,3 +11,7 @@ class AdminCreateIn(BaseModel):
 
 class AdminOut(BaseModel):
     id: UUID
+
+
+class UUIDIn(BaseModel):
+    id: UUID

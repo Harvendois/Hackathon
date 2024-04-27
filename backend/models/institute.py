@@ -44,3 +44,6 @@ class Institute(UUIDBase):
             business_license=business_license,
             user_id=user_id,
         )
+
+    def approve(self) -> None:
+        self.user.approve()

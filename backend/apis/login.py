@@ -10,7 +10,13 @@ from backend.schemas.admin import AdminOut
 from backend.schemas.company import CompanyCreateIn, CompanyCreateOut
 from backend.schemas.institute import InstituteCreateIn, InstituteCreateOut
 from backend.schemas.student import StudentCreateIn, StudentCreateOut
-from backend.schemas.user import RefreshToken, UserCreateIn, UserIn, UserTokenOut
+from backend.schemas.user import (
+    JWTAuthenticateUser,
+    RefreshToken,
+    UserCreateIn,
+    UserIn,
+    UserTokenOut,
+)
 from backend.settings.db import get_db_sess
 from backend.utils.auth import authenticate, create_access_token, refresh_access_token
 
@@ -34,7 +40,13 @@ def login(
             detail=str(e),
         )
     else:
-        access_token = create_access_token(user)
+        access_token = create_access_token(
+            JWTAuthenticateUser(
+                id=user.id,
+                email=user.email,
+                name=user.name,
+            )
+        )
         return UserTokenOut(
             token=access_token,
             user_id=user.id,
