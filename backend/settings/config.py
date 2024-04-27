@@ -49,5 +49,5 @@ JWT_AUTH = {
     "JWT_AUTH_HEADER_PREFIX": "Bearer",
 }
 
-TIMEZONE = ZoneInfo("Asia/Seoul")
+# TIMEZONE = ZoneInfo("Asia/Seoul")
 logger.info(f"SQLALCHEMY_DATABASE_URI: {SQLALCHEMY_DATABASE_URI}")
