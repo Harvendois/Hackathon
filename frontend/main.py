@@ -407,14 +407,14 @@ def main_page():
                         ):
                             ui.badge('George Mason',color='green').props('floating')
                         with ui.card_section():
-                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
-                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Marketing Data Analysis Intern / Deloitte').classes('underline font-bold')
+                            ui.label('App. Due: ~05/03 / Paid Full-Time')
                             ui.label('Location: Seoul, Korea')
                             ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
                             ui.button("English").classes('mt-2')
                             ui.button("Korean").classes('mt-2')
-                            ui.button("Fashion Business Management").classes('mt-2')
+                            ui.button("Computational Data Science").classes('mt-2')
 
 
                 # internship 3
@@ -427,14 +427,14 @@ def main_page():
                         ):
                             ui.badge('George Mason',color='green').props('floating')
                         with ui.card_section():
-                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
-                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Digital-Content Social Crew Intern / Superookie').classes('underline font-bold')
+                            ui.label('App. Due: ~05/01 / Paid part-Time')
                             ui.label('Location: Seoul, Korea')
                             ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
                             ui.button("English").classes('mt-2')
                             ui.button("Korean").classes('mt-2')
-                            ui.button("Fashion Business Management").classes('mt-2')
+                            ui.button("Business Management").classes('mt-2')
                 
                 # internship 4
                 with ui.link(
@@ -446,14 +446,14 @@ def main_page():
                         ):
                             ui.badge('Utah Asia',color='red').props('floating')
                         with ui.card_section():
-                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
-                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Talent Acquisition Intern 2024 / Superookie').classes('underline font-bold')
+                            ui.label('App. Due: ~05/17 / Paid Full-Time')
                             ui.label('Location: Seoul, Korea')
                             ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
                             ui.button("English").classes('mt-2')
                             ui.button("Korean").classes('mt-2')
-                            ui.button("Fashion Business Management").classes('mt-2')
+                            ui.button("Communication").classes('mt-2')
 
                 # internship 5
                 
@@ -466,14 +466,14 @@ def main_page():
                         ):
                             ui.badge('Ghent Univ.',color='blue').props('floating')
                         with ui.card_section():
-                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
-                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Project manager Intern / Innomotics').classes('underline font-bold')
+                            ui.label('App. Due: ~05/23 / Paid Full-Time')
                             ui.label('Location: Seoul, Korea')
                             ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
                             ui.button("English").classes('mt-2')
                             ui.button("Korean").classes('mt-2')
-                            ui.button("Fashion Business Management").classes('mt-2')
+                            ui.button("Business Economics").classes('mt-2')
 
                 # internship 6
                 with ui.link(
@@ -485,14 +485,14 @@ def main_page():
                         ):
                             ui.badge('SUNY Korea',color='blue').props('floating')
                         with ui.card_section():
-                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
-                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Career Development Center / SUNY Korea').classes('underline font-bold')
+                            ui.label('App. Due: ~05/30 / Paid part-Time')
                             ui.label('Location: Seoul, Korea')
                             ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
                             ui.button("English").classes('mt-2')
                             ui.button("Korean").classes('mt-2')
-                            ui.button("Fashion Business Management").classes('mt-2')
+                            ui.button("All students in SUNY").classes('mt-2')
     # mask for section
     with ui.grid(columns="1fr").classes("mask"):
         ui.label('🥇 Events').classes('title text-white')
