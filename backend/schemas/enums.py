@@ -12,3 +12,25 @@ class SchoolType(StrEnum):
     GEORGE_MASON = "george_mason"
     UTAH = "utah"
     GHENT = "ghent"
+
+
+class EventType(StrEnum):
+    IGC = "igc"
+    CAREER = "career"
+    SCHOOL = "school"
+
+
+class LocationType(StrEnum):
+    SEOUL = "seoul"
+    INCHEON = "incheon"
+
+
+class WorkType(StrEnum):
+    ONLINE = "online"
+    OFFLINE = "offline"
+    HYBRID = "hybrid"
+
+
+class EntityType(StrEnum):
+    COMPANY = "company"
+    INSTITUTE = "institute"

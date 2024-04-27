@@ -45,3 +45,15 @@ class Student(UUIDBase):
 
     def approve(self) -> None:
         self.user.approve()
+
+    def update(
+        self,
+        school: str,
+        major: str,
+        enrollment_cert: str,
+        student_id_card: str,
+    ) -> None:
+        self.school = school
+        self.major = major
+        self.enrollment_cert = enrollment_cert
+        self.student_id_card = student_id_card

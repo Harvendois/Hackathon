@@ -42,3 +42,11 @@ class User(UUIDBase):
 
     def approve(self) -> None:
         self.verified = True
+
+    def update(
+        self,
+        name: str,
+        email: str,
+    ) -> None:
+        self.name = name
+        self.email = email

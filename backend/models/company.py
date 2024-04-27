@@ -9,7 +9,7 @@ from .base import UUIDBase
 __all__ = ["Company"]
 
 if TYPE_CHECKING:
-    from .posts import Post
+    from .post import Post
     from .user import User
 
 
@@ -46,3 +46,13 @@ class Company(UUIDBase):
 
     def approve(self) -> None:
         self.user.approve()
+
+    def update(
+        self,
+        location: str,
+        website: str,
+        business_license: str,
+    ) -> None:
+        self.location = location
+        self.website = website
+        self.business_license = business_license
