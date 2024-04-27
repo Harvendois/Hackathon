@@ -38,7 +38,7 @@ def init(fastapi_app: FastAPI) -> None:
                 z-index: 3;
             }
             #navbar_brand{
-                color: blueviolet;
+                color: #4593fc;
                 font-weight: bold;
                 transition: 1s;
             }
@@ -67,19 +67,25 @@ def init(fastapi_app: FastAPI) -> None:
                 justify-content: center;
                 align-items: center;
                 width: 100%;
+                
                 margin: 0 auto;
-                height: fit-content;
+                height: 10vh;
+                background-color: #4593fc;
             }
             .welcome, .events{
                 height: 20vh;
             }
             .search_bar{
-                
-                width: 300px;
+                background-color: white;
+                border-radius: 20px;
+                width: 20%;
             }
+
             .left_bar{
-                height: 90vh;
+                height: 30vh;
                 margin-top: 10vh;
+                margin-left:2vh;
+                width: 100%;
                 position: sticky;
                 top: 15vh;
             }
@@ -348,7 +354,7 @@ footer{
     width: 100%;
     height: auto;
     /*background-color: rgb(255, 213, 255, 0.2);*/
-    background-color: blueviolet;
+    background-color: #4593fc;
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 17px;
@@ -413,8 +419,6 @@ footer > div{
         <div class="justify-content-end" id="">
             <ul class="navbar-nav">
                 <li class="nav-item" onclick="scrollToSection('#hero')">Main</li>
-                <li class="nav-item" onclick="scrollToSection('#about')">Internships</li>
-                <li class="nav-item" onclick="scrollToSection('#projects')">Register Internship</li>
                 <li class="nav-item" onclick="scrollToSection('#experience')">My Page</li>                    
             </ul>
             
@@ -447,74 +451,14 @@ footer > div{
         with ui.grid(columns='1fr').classes('wrapper_div gap-2'):
             ui.input(placeholder='Search Any Internship!').props('rounded outlined dense').classes('search_bar')
 
-        # recommendation section mask 
-        with ui.grid(columns='1fr').classes('w-full'):
-            ui.html('<div class="mask"></div>').classes('')
-
-        # recommendation section
-        with ui.grid(columns='1fr').classes('w-full gap-2'):
-            ui.html('''
-                <section id="skills">
-                <div id="skills_wrapper">
-                <div class="skill_wrapper" id="eng_skills">
-                  <div class="text_wrapper">
-                    <p class="skill_emoji">&#128261;</p>
-                    <p class="skill_title">Engineering Skills</p>
-                    <p class="skill_desc">I am currently learning and researching about ML</p>
-                    <p class="skill_title">Engineering Tools I Use</p>
-                    <ul class="skill_list">
-                        <li>NX10</li>
-                        <li>MATLAB</li>
-                        <li>R (Big Data Management)</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="skill_wrapper" id="dev_skills">
-                  <div class="text_wrapper">
-                    <p class="skill_emoji">&#128187;</p>
-                    <p class="skill_title">Developer Skills</p>
-                    <p class="skill_desc">I am delving into Machine Learning and Neural Networks.</p>
-                    <p class="skill_title">Languages I Use</p>
-                    <ul class="skill_list">
-                        <li>Java & Spring</li>
-                        <li>JavaScript (ES6, React JS)</li>
-                        <li>Python (Pytorch)</li>
-                        <li>OracleSQL XE</li>
-                        <li>PL/SQL</li>
-                        <li>HTML5&CSS3</li>
-                    </ul>
-                </div>
-                </div>
-                <div class="skill_wrapper" id="gen_skills">
-                  <div class="text_wrapper">
-                    <p class="skill_emoji">&#128204;</p>
-                    <p class="skill_title">General Skills</p>
-                    <p class="skill_desc">Past Experiences become Current Life Skills</p>
-                    <p class="skill_title">Experience I Have</p>
-                    <ul class="skill_list">
-                        <li>Academic Writing</li>
-                        <li>ChatGPT Prompt Engineering</li>
-                        <li>Event Management</li>
-                        <li>Interpreting/Translating</li>
-                        <li>Leadership/Teamwork</li>
-                        <li>Public Speaking</li>
-                        <li>Teaching/Tutoring/Mentoring</li>
-                    </ul>
-                  </div>
-                </div>
-            </div>
-            </section>
-''')
-
         # main content
-        with ui.grid(columns='1fr 3fr').classes('w-full gap-5'):
+        with ui.grid(columns='1fr 5fr').classes('w-full gap-5 tab_wrapper'):
             # tabs section
-            with ui.grid(rows='1fr 1fr 1fr 1fr 1fr ').classes('gap-2 left_bar'):
+            with ui.grid(rows='1fr 1fr 1fr 1fr ').classes('gap-2 left_bar'):
     
-                ui.html('<div class="tabs" >Internships</div>').classes('border p-1')
-                ui.html('<div class="tabs" >Jobs</div>').classes('border p-1')
+                ui.html('<div class="tabs" >Internships/Jobs</div>').classes('border p-1')
                 ui.html('<div class="tabs" >Events</div>').classes('border p-1')
-                ui.html('<div class="tabs" >Mentoring</div>').classes('border p-1')
+                ui.html('<div class="tabs" >Employers</div>').classes('border p-1')
                 ui.html('<div class="tabs" >Career Center</div>').classes('border p-1')
 
             # internships section
@@ -525,9 +469,15 @@ footer > div{
                     # internship 1
                     with ui.link(target='https://jobs.louisvuitton.com/en/search-page/job/2024-retail-management-trainee-south-korea-seoul-dom-880093'):
                         with ui.card().tight().classes('right_bar border p-1'):
-                            ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\job-retail.jpg')
+                            with ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\job-retail.jpg'):
+                                ui.label('Retail Management Trainee - Louis Vuitton').classes('absolute-bottom')
                             with ui.card_section():
-                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                                ui.button.default_props('rounded outline')
+                                ui.button('Fashion Business Management')
+                                ui.button('~04/30')
+                                ui.button('Graduate')
+                                ui.button('English')
+                                ui.button('Korean')
 
                     # internship 2
                     with ui.link(target='https://join.deloitte.co.kr/WiseRecruit2/User/RecruitView.aspx?ridx=2508'):
@@ -574,8 +524,8 @@ footer > div{
             ui.html('''
                 <footer>
             <div id="footer">
-                <div><i class="fa-solid fa-gear"></i> Jungha's Website <i class="fa-solid fa-code"></i></div>
-                <p style="font-size: 30px;">I try, just to try again.</p>
+                <div><i class="fa-solid fa-gear"></i> I Got Career <i class="fa-solid fa-code"></i></div>
+                <p style="font-size: 30px;">Make IGC Great Again?</p>
                 <div id="socialmedia_wrapper">
                     <a href="https://kr.linkedin.com/in/jungha-j-cho-895211126"><div id="linkedin"></div></a>
                     <a href="https://www.instagram.com/chojungha98/"><div id="instagram"></div></a>
