@@ -28,3 +28,18 @@ class Company(UUIDBase):
     posts: Mapped[list["Post"]] = relationship(
         back_populates="company",
     )
+
+    @classmethod
+    def create(
+        cls,
+        location: str,
+        website: str,
+        business_license: str,
+        user_id: UUID,
+    ) -> "Company":
+        return cls(
+            location=location,
+            website=website,
+            business_license=business_license,
+            user_id=user_id,
+        )

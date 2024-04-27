@@ -1,4 +1,4 @@
-from typing import AsyncIterable, Optional
+from typing import Iterable, Optional
 
 from fastapi import Depends
 from sqlalchemy import create_engine
@@ -17,7 +17,7 @@ __all__ = [
 _db_conn: Optional[Database] = None
 
 
-async def open_database_connection_pools():
+def open_database_connection_pools():
     global _db_conn
     _db_conn = create_engine(
         SQLALCHEMY_DATABASE_URI, pool_pre_ping=True, pool_size=10, max_overflow=20
@@ -26,18 +26,18 @@ async def open_database_connection_pools():
     return
 
 
-async def close_database_connection_pools():
+def close_database_connection_pools():
     global _db_conn
     if _db_conn:
         _db_conn.dispose()
 
 
-async def get_db_conn() -> Database:
+def get_db_conn() -> Database:
     assert _db_conn is not None
     return _db_conn
 
 
-async def get_db_sess(db_conn=Depends(get_db_conn)) -> AsyncIterable[Session]:
+def get_db_sess(db_conn=Depends(get_db_conn)) -> Iterable[Session]:
     sess = Session(bind=db_conn)
     try:
         yield sess

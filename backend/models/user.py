@@ -1,4 +1,5 @@
 from typing import TYPE_CHECKING
+from uuid import uuid4
 
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, MappedColumn, relationship
@@ -17,10 +18,24 @@ if TYPE_CHECKING:
 class User(UUIDBase):
     __tablename__ = "users"
     name: Mapped[str] = MappedColumn(String())
-    email: Mapped[str] = MappedColumn(String())
+    email: Mapped[str] = MappedColumn(String(), unique=True)
     password: Mapped[str] = MappedColumn(String())
 
     student: Mapped["Student"] = relationship("Student", back_populates="user")
     institute: Mapped["Institute"] = relationship("Institute", back_populates="user")
     company: Mapped["Company"] = relationship("Company", back_populates="user")
     admin: Mapped["Admin"] = relationship("Admin", back_populates="user")
+
+    @classmethod
+    def create(
+        cls,
+        name: str,
+        email: str,
+        password: str,
+    ) -> "User":
+        return cls(
+            id=uuid4(),
+            name=name,
+            email=email,
+            password=password,
+        )
