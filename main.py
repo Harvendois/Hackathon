@@ -50,6 +50,7 @@ class AuthMiddelware(BaseHTTPMiddleware):
             or "login" in str(request.url)
             or "refresh-token" in str(request.url)
             or "register" in str(request.url)
+            or "/" in str(request.url)
         ):
             if not request.headers.get("authorization"):
                 raise HTTPException(
