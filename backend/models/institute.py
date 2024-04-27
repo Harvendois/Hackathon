@@ -1,5 +1,5 @@
 from typing import TYPE_CHECKING
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, MappedColumn, relationship
@@ -24,3 +24,19 @@ class Institute(UUIDBase):
         back_populates="institute",
         single_parent=True,
     )
+
+    @classmethod
+    def create(
+        cls,
+        location: str,
+        website: str,
+        business_license: str,
+        user_id: UUID,
+    ) -> "Institute":
+        return cls(
+            id=uuid4(),
+            location=location,
+            website=website,
+            business_license=business_license,
+            user_id=user_id,
+        )
