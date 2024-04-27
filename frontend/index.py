@@ -3,6 +3,7 @@ from nicegui import ui
 
 from .login import login_page
 from .main import main_page
+from .post import post_page
 
 
 def init(fastapi_app: FastAPI) -> None:
@@ -13,6 +14,10 @@ def init(fastapi_app: FastAPI) -> None:
     @ui.page("/login")
     def login():
         login_page()
+
+    @ui.page("/post")
+    def post():
+        post_page()
 
     ui.run_with(
         fastapi_app,

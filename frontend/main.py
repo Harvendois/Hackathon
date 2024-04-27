@@ -34,7 +34,7 @@ def main_page():
                 z-index: 3;
             }
             #navbar_brand{
-                color: #4593fc;
+                color: #002147;
                 font-weight: bold;
                 transition: 1s;
             }
@@ -66,7 +66,7 @@ def main_page():
                 
                 margin: 0 auto;
                 height: 10vh;
-                background-color: #4593fc;
+                background-color: #002147;
             }
             .welcome, .events{
                 height: 20vh;
@@ -139,16 +139,24 @@ def main_page():
             .profile_photo:hover{
                 transform: scale(1.2);
             }
+                     
+            .mask{
+                width: 100%;
+                height: 30vh;
+                background-color: #002147;
+                border-radius: 5px;
+            }
                          
-                         #skills{
-    margin-top: 0vh;
-    width: 100%;
-    height: 45vh;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+            #skills{
+                margin-top: 0vh;
+                margin-left: 72vh;
+                width: 100%;
+                height: 45vh;
+                background-color: white;
+                display: flex;
+                justify-content: center;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
 
             #skills_wrapper{
     width: 90%;
@@ -241,154 +249,37 @@ def main_page():
     margin: 0 auto;
 }               
 
-    .mask{
-        width: 100%;
-        height: 40vh;
-        background-color: blueviolet;
-        border-radius: 5px;
-    }
-            
-                         
-
-                         #projects{
-    background: white;
-    color: blueviolet; 
-    padding-top: 10px;
-    width: 100%;
-    height: auto;
-}
-
-
-
-.project_wrapper{
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
-    justify-content: space-evenly;
-}
-
-.projects{
-    background-color: white;
-    color: white;
-    border: 1px solid #E6ECF8;
-    border-radius: 10px;
-    height: 270px;
-    margin: 20px;
-    flex: 0 0 400px;
-    z-index: 1;
-    transition: .5s;
-    position: relative;
-}
-.project_hover{
-    /*for itself*/
-    transition: .5s ease-in-out;
-    z-index: 2;
-    opacity: 0;
-    width: 400px;
-    height: 270px;
-    margin: 20px;
-    border-radius: 10px;
-    /*for children*/
-    display: flex; 
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    background: #141c3a;
-    color: white;
-    position: absolute;
-}
-.project_hover:hover{
-    opacity: 1;
-}
-.project_text{
-    text-align: center;
-    width: 70%;
-    margin-bottom: 5%;
-}
-
-/*specific traits*/
-#project1{
-    background: url('../Images/hero.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#project2{
-    background: url('../Images/openai.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#project3{
-    background: url('../Images/instagram.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-/*more projects button*/
-#projects_button_wrapper{
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    padding: 40px 0px;
-}
-#more_projects_button{
-    background: #141c3a;
-    color: white;
-    border: black 2px solid;
-    transition: .5s;
-    
-}
-#more_projects_button:hover{
-    background: white;
-    color: black;
-    border: black 2px solid;
-    transition: 0.5s;
-}
+                      
                          
                          /*footer*/
-footer{
+.footer{
+    margin-top: 10vh;
     padding-top: 20px;
     width: 100%;
     height: auto;
     /*background-color: rgb(255, 213, 255, 0.2);*/
-    background-color: #4593fc;
+    background-color: #002147;
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 17px;
+    border-radius: 10px;
 }
-footer > div{
-    height: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-}
-#socialmedia_wrapper{
+
+.socialmedia_wrapper{
     width: 60%;
     height: auto;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    margin-left: 52vh;
 
 }
-#linkedin, #instagram, #notion, #github{
+.linkedin, .instagram, .notion, .github{
     border-radius: 50%;
     width: 30px;
     height: 30px;
     margin: 0px 10px;
-    margin-bottom: 20px;
-}
-#linkedin{
-    background: url('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\linkedin.png') 50% 50\% /100% 100\%;
-}
-#instagram{
-    background: url('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\instagram.png') 50% 50\% /100% 100\%;
-}
-#notion{
-    background: url('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\notion.png') 50% 50\% /100% 100\%;
-}
-#github{
-    background: url('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\github.png') 50% 50\% /105% 105\%;
 }
 
 
@@ -415,8 +306,8 @@ footer > div{
         <!-- Navbar links -->
         <div class="justify-content-end" id="">
             <ul class="navbar-nav">
-                <li class="nav-item" onclick="scrollToSection('#hero')">Main</li>
-                <li class="nav-item" onclick="scrollToSection('#experience')">My Page</li>                    
+                <li class="nav-item" onclick="scrollToSection('#')">Main</li>
+                <li class="nav-item" onclick="scrollToSection('#')">My Page</li>                    
             </ul>
             
         </div>
@@ -493,9 +384,12 @@ footer > div{
                     target="https://join.deloitte.co.kr/WiseRecruit2/User/RecruitView.aspx?ridx=2508"
                 ):
                     with ui.card().tight().classes("right_bar border p-1"):
-                        ui.image(
+                        with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\deloitte-logo.png"
-                        )
+                        ):
+                            ui.label(
+                                "Retail Management Trainee - Louis Vuitton"
+                            ).classes("absolute-bottom")
                         with ui.card_section():
                             ui.button.default_props("rounded outline")
                             ui.button("Fashion Business Management")
@@ -510,9 +404,12 @@ footer > div{
                     target="https://www.superookie.com/jobs/662709078b129f7000361c89"
                 ):
                     with ui.card().tight().classes("right_bar border p-1"):
-                        ui.image(
+                        with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\lg.png"
-                        )
+                        ):
+                            ui.label(
+                                "Retail Management Trainee - Louis Vuitton"
+                            ).classes("absolute-bottom")
                         with ui.card_section():
                             ui.button.default_props("rounded outline")
                             ui.button("Fashion Business Management")
@@ -526,9 +423,12 @@ footer > div{
                     target="https://www.superookie.com/jobs/6620d4568b129f64f86e6912"
                 ):
                     with ui.card().tight().classes("right_bar border p-1"):
-                        ui.image(
+                        with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\tiktok.webp"
-                        )
+                        ):
+                            ui.label(
+                                "Retail Management Trainee - Louis Vuitton"
+                            ).classes("absolute-bottom")
                         with ui.card_section():
                             ui.button.default_props("rounded outline")
                             ui.button("Fashion Business Management")
@@ -543,9 +443,12 @@ footer > div{
                     with ui.link(
                         target="https://www.peoplenjob.com/jobs/5620255?type=intern"
                     ):
-                        ui.image(
+                        with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\innomotics.png"
-                        )
+                        ):
+                            ui.label(
+                                "Retail Management Trainee - Louis Vuitton"
+                            ).classes("absolute-bottom")
                         with ui.card_section():
                             ui.button.default_props("rounded outline")
                             ui.button("Fashion Business Management")
@@ -557,9 +460,12 @@ footer > div{
                 # internship 6
                 with ui.link(target="https://sunykoreacdc.youcanbook.me/"):
                     with ui.card().tight().classes("right_bar border p-1"):
-                        ui.image(
+                        with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\header.jpg"
-                        )
+                        ):
+                            ui.label(
+                                "Retail Management Trainee - Louis Vuitton"
+                            ).classes("absolute-bottom")
                         with ui.card_section():
                             ui.button.default_props("rounded outline")
                             ui.button("Fashion Business Management")
@@ -567,22 +473,77 @@ footer > div{
                             ui.button("Graduate")
                             ui.button("English")
                             ui.button("Korean")
+    # mask for section
+    ui.grid(columns="1fr").classes("mask")
+
+    # section
+    ui.html('''
+    <section id="skills">
+            <div id="skills_wrapper">
+                <div class="skill_wrapper" id="eng_skills">
+                  <div class="text_wrapper">
+                    <p class="skill_emoji">&#128261;</p>
+                    <p class="skill_title">Engineering Skills</p>
+                    <p class="skill_desc">I am currently learning and researching about ML</p>
+                    <p class="skill_title">Engineering Tools I Use</p>
+                    <ul class="skill_list">
+                        <li>NX10</li>
+                        <li>MATLAB</li>
+                        <li>R (Big Data Management)</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="skill_wrapper" id="dev_skills">
+                  <div class="text_wrapper">
+                    <p class="skill_emoji">&#128187;</p>
+                    <p class="skill_title">Developer Skills</p>
+                    <p class="skill_desc">I am delving into Machine Learning and Neural Networks.</p>
+                    <p class="skill_title">Languages I Use</p>
+                    <ul class="skill_list">
+                        <li>Java & Spring</li>
+                        <li>JavaScript (ES6, React JS)</li>
+                        <li>Python (Pytorch)</li>
+                        <li>OracleSQL XE</li>
+                        <li>PL/SQL</li>
+                        <li>HTML5&CSS3</li>
+                    </ul>
+                </div>
+                </div>
+                <div class="skill_wrapper" id="gen_skills">
+                  <div class="text_wrapper">
+                    <p class="skill_emoji">&#128204;</p>
+                    <p class="skill_title">General Skills</p>
+                    <p class="skill_desc">Past Experiences become Current Life Skills</p>
+                    <p class="skill_title">Experience I Have</p>
+                    <ul class="skill_list">
+                        <li>Academic Writing</li>
+                        <li>ChatGPT Prompt Engineering</li>
+                        <li>Event Management</li>
+                        <li>Interpreting/Translating</li>
+                        <li>Leadership/Teamwork</li>
+                        <li>Public Speaking</li>
+                        <li>Teaching/Tutoring/Mentoring</li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+        </section>
+''')
 
     # footer
-    with ui.grid(columns="1fr").classes("w-full"):
-        ui.html("""
-                <footer>
-            <div id="footer">
-                <div><i class="fa-solid fa-gear"></i> I Got Career <i class="fa-solid fa-code"></i></div>
-                <p style="font-size: 30px;">Make IGC Great Again?</p>
-                <div id="socialmedia_wrapper">
-                    <a href="https://kr.linkedin.com/in/jungha-j-cho-895211126"><div id="linkedin"></div></a>
-                    <a href="https://www.instagram.com/chojungha98/"><div id="instagram"></div></a>
-                    <a href="https://www.notion.so/Jungha-s-Home-ea8f7f7e75cd49ffa21bca0988bc71f8"><div id="notion"></div></a>
-                    <a href="https://github.com/Harvendois?tab=repositories"><div id="github"></div></a>
-                </div>
-                <p>Hardcoded by myself &#169; JunghaCho in 2023</p>
-                <p>Design Motivated from Matt Farley</p>
-            </div>
-        </footer>
-""").classes("border p-1")
+    with ui.grid(columns="1fr").classes("w-full footer"):
+        
+        with ui.grid(columns="1fr").classes("w-full"):
+            ui.label("I Got Career").classes("text-center font-bold text-2xl")
+            ui.label("Make IGC Great Again?").classes("text-center text-3xl")
+            with ui.grid(rows="1fr 1fr 1fr 1fr").classes("w-50 socialmedia_wrapper"):
+                with ui.link(target="https://kr.linkedin.com/in/jungha-j-cho-895211126"):
+                    ui.image("C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\linkedin.png").classes("linkedin")
+                with ui.link(target="https://www.instagram.com/chojungha98/"):
+                    ui.image("C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\instagram.png").classes("instagram")
+                with ui.link(target="https://www.notion.so/Jungha-s-Home-ea8f7f7e75cd49ffa21bca0988bc71f8"):
+                    ui.image("C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\notion.png").classes("notion")
+                with ui.link(target="github.com/Harvendois?tab=repositories"):
+                    ui.image("C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\github.png").classes("github")
+            ui.label("Copyright of © HawonsMuffins in 2024").classes("text-center")
+            ui.label("Design by HawonsMuffins").classes("text-center")
