@@ -12,8 +12,9 @@ from starlette.requests import Request
 from starlette.responses import JSONResponse
 
 from backend.apis.admin import router as admin_router
+from backend.apis.event import router as event_router
 from backend.apis.login import router as login_router
-from backend.settings.config import JWT_AUTH
+from backend.apis.post import router as post_router
 from backend.settings.db import (
     close_database_connection_pools,
     open_database_connection_pools,
@@ -128,6 +129,8 @@ app.add_middleware(
 
 app.include_router(login_router, tags=["login"])
 app.include_router(admin_router, tags=["admin"])
+app.include_router(post_router, tags=["post"])
+app.include_router(event_router, tags=["event"])
 
 frontend_init(app)
 
