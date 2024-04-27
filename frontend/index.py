@@ -440,8 +440,8 @@ footer > div{
 
             </div> 
                 ''').classes('welcome border p-1')
-                
-            ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\event_banner.jpg').classes('events border p-1')
+            with ui.link(target='https://www.superookie.com/jobs/6620d4568b129f64f86e6912'):    
+                ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\event_banner.jpg').classes('events border p-1')
 
         # search bar
         with ui.grid(columns='1fr').classes('wrapper_div gap-2'):
@@ -523,44 +523,50 @@ footer > div{
                 with ui.grid(columns='1fr 1fr').classes('internships_wrapper'):
                     
                     # internship 1
-                    with ui.card().tight().classes('right_bar border p-1'):
-                        ui.image('https://picsum.photos/id/684/640/360')
-                        with ui.card_section():
-                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                    with ui.link(target='https://jobs.louisvuitton.com/en/search-page/job/2024-retail-management-trainee-south-korea-seoul-dom-880093'):
+                        with ui.card().tight().classes('right_bar border p-1'):
+                            ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\job-retail.jpg')
+                            with ui.card_section():
+                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
 
                     # internship 2
-                    with ui.card().tight().classes('right_bar border p-1'):
-                        ui.image('https://picsum.photos/id/684/640/360')
-                        with ui.card_section():
-                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                    with ui.link(target='https://join.deloitte.co.kr/WiseRecruit2/User/RecruitView.aspx?ridx=2508'):
+                        with ui.card().tight().classes('right_bar border p-1'):
+                            ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\deloitte-logo.png')
+                            with ui.card_section():
+                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
                     
                 with ui.grid(columns='1fr 1fr').classes('internships_wrapper'):
                     
                     # internship 3
-                    with ui.card().tight().classes('right_bar border p-1'):
-                        ui.image('https://picsum.photos/id/684/640/360')
-                        with ui.card_section():
-                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                    with ui.link(target='https://www.superookie.com/jobs/662709078b129f7000361c89'):
+                        with ui.card().tight().classes('right_bar border p-1'):
+                            ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\lg.png')
+                            with ui.card_section():
+                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
 
                     # internship 4
-                    with ui.card().tight().classes('right_bar border p-1'):
-                        ui.image('https://picsum.photos/id/684/640/360')
-                        with ui.card_section():
-                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                    with ui.link(target='https://www.superookie.com/jobs/6620d4568b129f64f86e6912'):
+                        with ui.card().tight().classes('right_bar border p-1'):
+                            ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\tiktok.webp')
+                            with ui.card_section():
+                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
 
                 with ui.grid(columns='1fr 1fr').classes('internships_wrapper'):
                     
                     # internship 5
                     with ui.card().tight().classes('right_bar border p-1'):
-                        ui.image('https://picsum.photos/id/684/640/360')
-                        with ui.card_section():
-                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                        with ui.link(target='https://www.peoplenjob.com/jobs/5620255?type=intern'):
+                            ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\innomotics.png')
+                            with ui.card_section():
+                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
 
                     # internship 6
-                    with ui.card().tight().classes('right_bar border p-1'):
-                        ui.image('https://picsum.photos/id/684/640/360')
-                        with ui.card_section():
-                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                    with ui.link(target='https://sunykoreacdc.youcanbook.me/'):
+                        with ui.card().tight().classes('right_bar border p-1'):
+                            ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\header.jpg')
+                            with ui.card_section():
+                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
                     
 
         # footer
