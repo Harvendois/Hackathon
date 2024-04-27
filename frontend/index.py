@@ -394,6 +394,9 @@ footer > div{
 #github{
     background: url('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\github.png') 50% 50\% /105% 105\%;
 }
+.cardtext{
+    color: black;
+}
 
 
         </style>                         
@@ -467,17 +470,17 @@ footer > div{
                 with ui.grid(columns='1fr 1fr').classes('internships_wrapper'):
                     
                     # internship 1
-                    with ui.link(target='https://jobs.louisvuitton.com/en/search-page/job/2024-retail-management-trainee-south-korea-seoul-dom-880093'):
+                    with ui.link(target='https://jobs.louisvuitton.com/en/search-page/job/2024-retail-management-trainee-south-korea-seoul-dom-880093').classes('!no-underline'):
                         with ui.card().tight().classes('right_bar border p-1'):
                             with ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\job-retail.jpg'):
                                 ui.label('Retail Management Trainee - Louis Vuitton').classes('absolute-bottom')
-                            with ui.card_section():
+                            with ui.card_section().classes(''):
                                 ui.button.default_props('rounded outline')
+                                ui.label('Retail Management Trainee / Louis Vuitton').classes('cardtext')
+                                ui.label('Seoul, South Korea').classes('cardtext')
                                 ui.button('Fashion Business Management')
-                                ui.button('~04/30')
                                 ui.button('Graduate')
                                 ui.button('English')
-                                ui.button('Korean')
 
                     # internship 2
                     with ui.link(target='https://join.deloitte.co.kr/WiseRecruit2/User/RecruitView.aspx?ridx=2508'):
