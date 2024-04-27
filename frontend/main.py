@@ -61,6 +61,11 @@ def main_page():
                 margin-right: 75%;
                 
             }
+            .logo_image{
+                width: 50px;
+                height: 50px;
+                margin-left: 10px;
+            }
                      
             .nav-item:hover{
                 color: yellow;
@@ -112,6 +117,11 @@ def main_page():
                 border: 1px solid black;
                 margin: 0 auto;
             }
+                     
+            .title{
+                font-size:30px; 
+                text-align:center;
+            }
             .tabs{
                 cursor: pointer;
                 text-align: center;
@@ -143,7 +153,7 @@ def main_page():
                 text-align: center;
                 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
                 font-weight: bold;
-                font-size: 20px;
+                font-size: 15px;
                 color: black;
                 height: auto;
             }
@@ -152,7 +162,7 @@ def main_page():
                 border-radius: 50%;
                 width: 100px;
                 height: 100px;
-                margin: 10px auto 0 auto;
+                margin: 10px -40px 0 auto;
                 z-index: 2;
                 border: 1px solid black;
                 transition: 0.5s ease-in-out;
@@ -317,13 +327,13 @@ def main_page():
             return time
 
         with ui.grid(columns="1fr").classes("w-full navbar"):
-            with ui.link(target="#").classes("!no-underline text-black"):
-                ui.label("I Got Career").classes("navbar-brand font-bold text-2xl")
+            with ui.grid(columns="1fr"):
+                 ui.label("I Got Career").classes("navbar-brand font-bold text-2xl")
             with ui.grid(columns="1fr 1fr").classes("justify-content-end nav-item-wrapper"):
                 with ui.link(target="#").classes("nav-item !no-underline text-black"):
                     ui.label("Main").classes("nav-item")
-                with ui.link(target="/mypage").classes("nav-item !no-underline text-black"):
-                    ui.label("My Page").classes("nav-item")
+                with ui.link(target="#").classes("nav-item !no-underline text-black"):
+                    ui.label("My Page").classes("nav-item").on('click', lambda: ui.notify('Feature Currently Developing...'))
 
 
     # welcome and events
@@ -332,21 +342,13 @@ def main_page():
             ui.image(
                 "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\yejun.jpg"
             ).classes("profile_photo")
-            ui.html("""
-                    <div id="text_wrapper">
+            
+            with ui.grid(columns="1fr").classes("w-full text_wrapper"):
+                with ui.grid(rows="1fr 1fr 1fr").classes("w-full self_description"):
+                    ui.label('Welcome Yejun Lee!').classes("about_text")
+                    ui.label('📌 Status: Enrolled, Spring 2024').classes("about_text")
+                    ui.label('🎓 Education: Stony Brook University, B.E.').classes("about_text")
 
-                <div class="self_description" id="basic_description">
-                    <div class="about_text"><p>
-                        
-                        Welcome! Yejun Lee,<br />
-                        &#128204; Status: Enrolled, Spring 2024 <br>
-                        &#127891; Education: Stony Brook University, B.E. 
-                    </p>
-                    </div>
-                </div>
-
-            </div> 
-                """).classes("welcome border p-1")
         with ui.link(target="https://www.superookie.com/jobs/6620d4568b129f64f86e6912"):
             ui.image(
                 "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\event_banner.jpg"
@@ -363,19 +365,18 @@ def main_page():
         # tabs section
         with ui.grid(rows="1fr 1fr 1fr 1fr ").classes("gap-2 left_bar"):
             with ui.link(target="#internship").classes('!no-underline text-black'):
-                ui.label('Internships/Jobs').classes("border p-1 tabs")
+                ui.label('🏢 Internships/Jobs').classes("border p-1 tabs")
             with ui.link(target="#skills").classes('!no-underline text-black'):
-                ui.label('Events').classes("border p-1 tabs")
+                ui.label('🥇 Events').classes("border p-1 tabs")
             with ui.link(target="#employers").classes('!no-underline text-black'):
-                ui.label('Employers').classes("border p-1 tabs")
+                ui.label('💰 Employers').classes("border p-1 tabs").on('click', lambda: ui.notify('Feature Currently Developing...'))
             with ui.link(target="#career_center").classes('!no-underline text-black'):
-                ui.label('Career Center').classes("border p-1 tabs")
+                ui.label('💁 Career Center').classes("border p-1 tabs").on('click', lambda: ui.notify('Feature Currently Developing...'))
+
 
         # internships section
         with ui.grid(rows="60px 1fr 1fr 1fr").classes("gap-3 internship_wrapper"):
-            ui.html(
-                '<div id="internship" style="font-size:30px; text-align:center">Recent Internships</div>'
-            ).classes("")
+            ui.label('🏢 Internships').classes('title')
             with ui.grid(columns="1fr 1fr").classes("internships_wrapper"):
                 # internship 1
                 with ui.link(
@@ -493,8 +494,9 @@ def main_page():
                             ui.button("Korean").classes('mt-2')
                             ui.button("Fashion Business Management").classes('mt-2')
     # mask for section
-    ui.grid(columns="1fr").classes("mask")
-
+    with ui.grid(columns="1fr").classes("mask"):
+        ui.label('🥇 Events').classes('title text-white')
+    
     # section
     ui.html('''
     <section id="skills">
