@@ -6,14 +6,20 @@ from sqlalchemy.orm import Session
 from backend.apis.deps import get_admin
 from backend.crud.admin import (
     approve_company,
+    approve_event,
     approve_institute,
+    approve_post,
     approve_student,
     reject_company,
+    reject_event,
     reject_institute,
+    reject_post,
     reject_student,
 )
 from backend.exceptions.company import CompanyNotFound
+from backend.exceptions.event import EventNotFound
 from backend.exceptions.institute import InstituteNotFound
+from backend.exceptions.post import PostNotFound
 from backend.exceptions.student import StudentNotFound
 from backend.models.admin import Admin
 from backend.settings.db import get_db_sess
@@ -123,6 +129,78 @@ def reject_institute_application(
     try:
         reject_institute(db, institute_id)
     except InstituteNotFound as e:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e),
+        )
+
+
+@router.patch(
+    "/approve-post/{post_id}",
+    status_code=status.HTTP_200_OK,
+)
+def approve_post_request(
+    post_id: UUID,
+    db: Session = Depends(get_db_sess),
+    admin: Admin = Depends(get_admin),
+):
+    try:
+        approve_post(db, post_id)
+    except PostNotFound as e:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e),
+        )
+
+
+@router.delete(
+    "/reject-post/{post_id}",
+    status_code=status.HTTP_200_OK,
+)
+def reject_post_request(
+    post_id: UUID,
+    db: Session = Depends(get_db_sess),
+    admin: Admin = Depends(get_admin),
+):
+    try:
+        reject_post(db, post_id)
+    except PostNotFound as e:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e),
+        )
+
+
+@router.patch(
+    "/approve-event/{event_id}",
+    status_code=status.HTTP_200_OK,
+)
+def approve_event_request(
+    event_id: UUID,
+    db: Session = Depends(get_db_sess),
+    admin: Admin = Depends(get_admin),
+):
+    try:
+        approve_event(db, event_id)
+    except EventNotFound as e:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e),
+        )
+
+
+@router.delete(
+    "/reject-event/{event_id}",
+    status_code=status.HTTP_200_OK,
+)
+def reject_event_request(
+    event_id: UUID,
+    db: Session = Depends(get_db_sess),
+    admin: Admin = Depends(get_admin),
+):
+    try:
+        reject_event(db, event_id)
+    except EventNotFound as e:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=str(e),

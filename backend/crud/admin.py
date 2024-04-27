@@ -5,12 +5,16 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
 from backend.exceptions.company import CompanyNotFound
+from backend.exceptions.event import EventNotFound
 from backend.exceptions.institute import InstituteNotFound
+from backend.exceptions.post import PostNotFound
 from backend.exceptions.student import StudentNotFound
 from backend.exceptions.user import EmailAlreadyTaken
 from backend.models.admin import Admin
 from backend.models.company import Company
+from backend.models.event import Event
 from backend.models.institute import Institute
+from backend.models.post import Post
 from backend.models.student import Student
 from backend.models.user import User
 from backend.schemas.admin import AdminCreateIn
@@ -170,4 +174,74 @@ def reject_institute(
         )
 
     db.delete(institute.user)
+    db.commit()
+
+
+def approve_post(
+    db: Session,
+    id: UUID,
+) -> None:
+    # get post
+    statement = select(Post).where(Post.id == id)
+    post: Post | None = db.execute(statement).scalars().one_or_none()
+
+    if not post:
+        raise PostNotFound(
+            id=id,
+        )
+
+    # approve post
+    post.approve()
+    db.commit()
+
+
+def reject_post(
+    db: Session,
+    id: UUID,
+) -> None:
+    # get post
+    statement = select(Post).where(Post.id == id)
+    post: Post | None = db.execute(statement).scalars().one_or_none()
+
+    if not post:
+        raise PostNotFound(
+            id=id,
+        )
+
+    db.delete(post)
+    db.commit()
+
+
+def approve_event(
+    db: Session,
+    id: UUID,
+) -> None:
+    # get event
+    statement = select(Event).where(Event.id == id)
+    event: Event | None = db.execute(statement).scalars().one_or_none()
+
+    if not event:
+        raise EventNotFound(
+            id=id,
+        )
+
+    # approve event
+    event.approve()
+    db.commit()
+
+
+def reject_event(
+    db: Session,
+    id: UUID,
+) -> None:
+    # get event
+    statement = select(Event).where(Event.id == id)
+    event: Event | None = db.execute(statement).scalars().one_or_none()
+
+    if not event:
+        raise EventNotFound(
+            id=id,
+        )
+
+    db.delete(event)
     db.commit()
