@@ -20,8 +20,15 @@ def main_page():
             .body{
                 font-family: SF Pro KR, SF Pro Text, SF Pro Icons, Apple Gothic, HY Gulim, MalgunGothic, HY Dotum, Lexi Gulim, Helvetica Neue, Helvetica, Arial, sans-serif;
             }
-            .nav_bar{
+            .navbar{
                 height:fit-content;     
+                position:fixed; 
+                top:0;
+                height: 9vh;
+                background-color: rgba(0,33,71,0.9);
+                z-index: 5;
+                border-radius: 10px;
+                
             }
             nav{
                 width: 100%;
@@ -33,25 +40,32 @@ def main_page():
                 right: 0;
                 z-index: 3;
             }
-            #navbar_brand{
-                color: #002147;
+            .navbar-brand{
+                color: white;
                 font-weight: bold;
                 transition: 1s;
+                margin-left: 10px;
             }
-            #navbar_brand:hover{
-                color: plum;
+            .navbar-brand:hover{
+                color: yellow;
                 transition: 1s;
+                scale: 1.05;
             }
             .nav-item{
-                margin: 0 10px;
+                margin: 0;
                 cursor: pointer;
-                color: black;
+                color: white;
                 font-weight: bold;
             }
+            .nav-item-wrapper{
+                margin-right: 75%;
+                
+            }
+                     
             .nav-item:hover{
-                color: blue;
+                color: yellow;
                 transition: 0.5s;
-                background-color: lightgray;
+                scale: 1.05;
             }
                          
             .welcome-section{
@@ -66,7 +80,7 @@ def main_page():
                 
                 margin: 0 auto;
                 height: 10vh;
-                background-color: #002147;
+                background-color: white;
             }
             .welcome, .events{
                 height: 20vh;
@@ -89,7 +103,7 @@ def main_page():
                 height: 50vh;
             }
             .internship_wrapper{
-                
+                height: 175vh;
             }         
             .internships{
                 width:60%;
@@ -103,7 +117,14 @@ def main_page():
                 text-align: center;
                 font-weight: bold;
                 font-size: 20px;
-                max-height: 5vh;
+                height:7vh;
+                border-radius: 10px;
+                padding-bottom:10px;
+            }
+            .tabs:hover{
+                color: yellow;
+                transition: 0.5s;
+                background-color: #002147;
             }
                          
             .self_description, #academic_description{
@@ -295,23 +316,15 @@ def main_page():
             time = await ui.run_javascript("new Date().toLocaleString()")
             return time
 
-        ui.html("""<nav class="navbar navbar-expand-md" style="position:fixed; left: 20px; background-color: rgba(255,255,255,0.9)">
-        
-        <!-- Toggler/collapsibe Button -->
-       <a class="navbar-brand" id="navbar_brand" href="#"> I Got Career </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <!-- Navbar links -->
-        <div class="justify-content-end" id="">
-            <ul class="navbar-nav">
-                <li class="nav-item" onclick="scrollToSection('#')">Main</li>
-                <li class="nav-item" onclick="scrollToSection('#')">My Page</li>                    
-            </ul>
-            
-        </div>
-    </nav>""")
+        with ui.grid(columns="1fr").classes("w-full navbar"):
+            with ui.link(target="#").classes("!no-underline text-black"):
+                ui.label("I Got Career").classes("navbar-brand font-bold text-2xl")
+            with ui.grid(columns="1fr 1fr").classes("justify-content-end nav-item-wrapper"):
+                with ui.link(target="#").classes("nav-item !no-underline text-black"):
+                    ui.label("Main").classes("nav-item")
+                with ui.link(target="/mypage").classes("nav-item !no-underline text-black"):
+                    ui.label("My Page").classes("nav-item")
+
 
     # welcome and events
     with ui.grid(columns="2fr 3fr").classes("welcome-section w-full gap-2"):
@@ -349,130 +362,136 @@ def main_page():
     with ui.grid(columns="1fr 5fr").classes("w-full gap-5 tab_wrapper"):
         # tabs section
         with ui.grid(rows="1fr 1fr 1fr 1fr ").classes("gap-2 left_bar"):
-            ui.html('<div class="tabs" >Internships/Jobs</div>').classes("border p-1")
-            ui.html('<div class="tabs" >Events</div>').classes("border p-1")
-            ui.html('<div class="tabs" >Employers</div>').classes("border p-1")
-            ui.html('<div class="tabs" >Career Center</div>').classes("border p-1")
+            with ui.link(target="#internship").classes('!no-underline text-black'):
+                ui.label('Internships/Jobs').classes("border p-1 tabs")
+            with ui.link(target="#skills").classes('!no-underline text-black'):
+                ui.label('Events').classes("border p-1 tabs")
+            with ui.link(target="#employers").classes('!no-underline text-black'):
+                ui.label('Employers').classes("border p-1 tabs")
+            with ui.link(target="#career_center").classes('!no-underline text-black'):
+                ui.label('Career Center').classes("border p-1 tabs")
 
         # internships section
         with ui.grid(rows="60px 1fr 1fr 1fr").classes("gap-3 internship_wrapper"):
             ui.html(
-                '<div class="" style="font-size:30px; text-align:center">Internship Posts</div>'
+                '<div id="internship" style="font-size:30px; text-align:center">Recent Internships</div>'
             ).classes("")
             with ui.grid(columns="1fr 1fr").classes("internships_wrapper"):
                 # internship 1
                 with ui.link(
                     target="https://jobs.louisvuitton.com/en/search-page/job/2024-retail-management-trainee-south-korea-seoul-dom-880093"
-                ):
+                ).classes('!no-underline text-black'):
                     with ui.card().tight().classes("right_bar border p-1"):
                         with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\job-retail.jpg"
                         ):
-                            ui.label(
-                                "Retail Management Trainee - Louis Vuitton"
-                            ).classes("absolute-bottom")
+                            ui.badge('SUNY Korea',color='blue').props('floating')
                         with ui.card_section():
+                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
+                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Location: Seoul, Korea')
+                            ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
-                            ui.button("Fashion Business Management")
-                            ui.button("~04/30")
-                            ui.button("Graduate")
-                            ui.button("English")
-                            ui.button("Korean")
+                            ui.button("English").classes('mt-2')
+                            ui.button("Korean").classes('mt-2')
+                            ui.button("Fashion Business Management").classes('mt-2')
 
                 # internship 2
                 with ui.link(
                     target="https://join.deloitte.co.kr/WiseRecruit2/User/RecruitView.aspx?ridx=2508"
-                ):
+                ).classes('!no-underline text-black'):
                     with ui.card().tight().classes("right_bar border p-1"):
                         with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\deloitte-logo.png"
                         ):
-                            ui.label(
-                                "Retail Management Trainee - Louis Vuitton"
-                            ).classes("absolute-bottom")
+                            ui.badge('George Mason',color='green').props('floating')
                         with ui.card_section():
+                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
+                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Location: Seoul, Korea')
+                            ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
-                            ui.button("Fashion Business Management")
-                            ui.button("~04/30")
-                            ui.button("Graduate")
-                            ui.button("English")
-                            ui.button("Korean")
+                            ui.button("English").classes('mt-2')
+                            ui.button("Korean").classes('mt-2')
+                            ui.button("Fashion Business Management").classes('mt-2')
 
-            with ui.grid(columns="1fr 1fr").classes("internships_wrapper"):
+
                 # internship 3
                 with ui.link(
                     target="https://www.superookie.com/jobs/662709078b129f7000361c89"
-                ):
+                ).classes('!no-underline text-black'):
                     with ui.card().tight().classes("right_bar border p-1"):
                         with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\lg.png"
                         ):
-                            ui.label(
-                                "Retail Management Trainee - Louis Vuitton"
-                            ).classes("absolute-bottom")
+                            ui.badge('George Mason',color='green').props('floating')
                         with ui.card_section():
+                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
+                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Location: Seoul, Korea')
+                            ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
-                            ui.button("Fashion Business Management")
-                            ui.button("~04/30")
-                            ui.button("Graduate")
-                            ui.button("English")
-                            ui.button("Korean")
-
+                            ui.button("English").classes('mt-2')
+                            ui.button("Korean").classes('mt-2')
+                            ui.button("Fashion Business Management").classes('mt-2')
+                
                 # internship 4
                 with ui.link(
                     target="https://www.superookie.com/jobs/6620d4568b129f64f86e6912"
-                ):
+                ).classes('!no-underline text-black'):
                     with ui.card().tight().classes("right_bar border p-1"):
                         with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\tiktok.webp"
                         ):
-                            ui.label(
-                                "Retail Management Trainee - Louis Vuitton"
-                            ).classes("absolute-bottom")
+                            ui.badge('Utah Asia',color='red').props('floating')
                         with ui.card_section():
+                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
+                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Location: Seoul, Korea')
+                            ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
-                            ui.button("Fashion Business Management")
-                            ui.button("~04/30")
-                            ui.button("Graduate")
-                            ui.button("English")
-                            ui.button("Korean")
+                            ui.button("English").classes('mt-2')
+                            ui.button("Korean").classes('mt-2')
+                            ui.button("Fashion Business Management").classes('mt-2')
 
-            with ui.grid(columns="1fr 1fr").classes("internships_wrapper"):
                 # internship 5
-                with ui.card().tight().classes("right_bar border p-1"):
-                    with ui.link(
-                        target="https://www.peoplenjob.com/jobs/5620255?type=intern"
-                    ):
+                
+                with ui.link(
+                    target="https://www.peoplenjob.com/jobs/5620255?type=intern"
+                ).classes('!no-underline text-black'):
+                    with ui.card().tight().classes("right_bar border p-1"):
                         with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\innomotics.png"
                         ):
-                            ui.label(
-                                "Retail Management Trainee - Louis Vuitton"
-                            ).classes("absolute-bottom")
+                            ui.badge('Ghent Univ.',color='blue').props('floating')
                         with ui.card_section():
+                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
+                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Location: Seoul, Korea')
+                            ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
-                            ui.button("Fashion Business Management")
-                            ui.button("~04/30")
-                            ui.button("Graduate")
-                            ui.button("English")
-                            ui.button("Korean")
+                            ui.button("English").classes('mt-2')
+                            ui.button("Korean").classes('mt-2')
+                            ui.button("Fashion Business Management").classes('mt-2')
 
                 # internship 6
-                with ui.link(target="https://sunykoreacdc.youcanbook.me/"):
+                with ui.link(
+                    target="https://sunykoreacdc.youcanbook.me/"
+                ).classes('!no-underline text-black'):
                     with ui.card().tight().classes("right_bar border p-1"):
                         with ui.image(
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\header.jpg"
                         ):
-                            ui.label(
-                                "Retail Management Trainee - Louis Vuitton"
-                            ).classes("absolute-bottom")
+                            ui.badge('SUNY Korea',color='blue').props('floating')
                         with ui.card_section():
+                            ui.label('Retail Management Trainee / Louis Vuitton').classes('underline font-bold')
+                            ui.label('App. Due: ~04/30 / Paid Full-Time')
+                            ui.label('Location: Seoul, Korea')
+                            ui.label('Job Description: ')
                             ui.button.default_props("rounded outline")
-                            ui.button("Fashion Business Management")
-                            ui.button("~04/30")
-                            ui.button("Graduate")
-                            ui.button("English")
-                            ui.button("Korean")
+                            ui.button("English").classes('mt-2')
+                            ui.button("Korean").classes('mt-2')
+                            ui.button("Fashion Business Management").classes('mt-2')
     # mask for section
     ui.grid(columns="1fr").classes("mask")
 
