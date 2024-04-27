@@ -483,46 +483,41 @@ def main_page():
                 <div class="skill_wrapper" id="eng_skills">
                   <div class="text_wrapper">
                     <p class="skill_emoji">&#128261;</p>
-                    <p class="skill_title">Engineering Skills</p>
-                    <p class="skill_desc">I am currently learning and researching about ML</p>
-                    <p class="skill_title">Engineering Tools I Use</p>
-                    <ul class="skill_list">
-                        <li>NX10</li>
-                        <li>MATLAB</li>
-                        <li>R (Big Data Management)</li>
+                    <p class="skill_title">Employers(Company)</p>
+                    <p class="skill_title">Samsung</p>
+                    <p class="skill_title">Apple</p>
+                    <p class="skill_title">Toss</p>
+                    <p class="skill_title">Naver</p>
+                    <p class="skill_title">Gen.G Esports</p>
+                    <p class="skill_title">Tiktok Korea</p>
                     </ul>
                   </div>
                 </div>
                 <div class="skill_wrapper" id="dev_skills">
                   <div class="text_wrapper">
                     <p class="skill_emoji">&#128187;</p>
-                    <p class="skill_title">Developer Skills</p>
-                    <p class="skill_desc">I am delving into Machine Learning and Neural Networks.</p>
-                    <p class="skill_title">Languages I Use</p>
-                    <ul class="skill_list">
-                        <li>Java & Spring</li>
-                        <li>JavaScript (ES6, React JS)</li>
-                        <li>Python (Pytorch)</li>
-                        <li>OracleSQL XE</li>
-                        <li>PL/SQL</li>
-                        <li>HTML5&CSS3</li>
+                    <p class="skill_title">Popular Job Postings</p>
+                    <br>
+                    <p class="skill_title">TOSS Payments</p>
+                    <p class="skill_desc">Software Engineer Intern, Korea</p>
+                    <p class="skill_title">Gen.G Esports</p>
+                    <p class="skill_desc">Digital Marketing Manager, Korea</p>
+                    <p class="skill_title">TikTok</p>
+                    <p class="skill_desc">Communication Intern, Korea</p>
                     </ul>
                 </div>
                 </div>
                 <div class="skill_wrapper" id="gen_skills">
                   <div class="text_wrapper">
                     <p class="skill_emoji">&#128204;</p>
-                    <p class="skill_title">General Skills</p>
-                    <p class="skill_desc">Past Experiences become Current Life Skills</p>
-                    <p class="skill_title">Experience I Have</p>
+                    <p class="skill_title">Career Events</p>
+                    <a href="https://forms.office.com/pages/responsepage.aspx?id=6nChzQVnykCl_7YjdLY8eYDzKYiysTNJiXbKMr1-Tg1UNFEySUUyTVpCS0NORU8zR003VkhGMkhNOS4u"><p class="skill_desc"> RSVP Link </p></a>
+                    <p class="skill_desc">Useful tips for career preparation</p>
+                    <p class="skill_title">"Spring 2024 Internship Panel"</p>
                     <ul class="skill_list">
-                        <li>Academic Writing</li>
-                        <li>ChatGPT Prompt Engineering</li>
-                        <li>Event Management</li>
-                        <li>Interpreting/Translating</li>
-                        <li>Leadership/Teamwork</li>
-                        <li>Public Speaking</li>
-                        <li>Teaching/Tutoring/Mentoring</li>
+                        <li>Date: April.3 (Wed.)</li>
+                        <li>Time: 12:10 p.m. - 1:30 p.m.</li>
+                        <li>Location: SUNY Korea C 103</li>
                     </ul>
                   </div>
                 </div>
