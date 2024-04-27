@@ -487,7 +487,12 @@ footer > div{
                         with ui.card().tight().classes('right_bar border p-1'):
                             ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\deloitte-logo.png')
                             with ui.card_section():
-                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                                ui.button.default_props('rounded outline')
+                                ui.label('Retail Management Trainee / Louis Vuitton').classes('cardtext')
+                                ui.label('Seoul, South Korea').classes('cardtext')
+                                ui.button('Fashion Business Management')
+                                ui.button('Graduate')
+                                ui.button('English')
                     
                 with ui.grid(columns='1fr 1fr').classes('internships_wrapper'):
                     
@@ -496,14 +501,24 @@ footer > div{
                         with ui.card().tight().classes('right_bar border p-1'):
                             ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\lg.png')
                             with ui.card_section():
-                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                                ui.button.default_props('rounded outline')
+                                ui.label('Retail Management Trainee / Louis Vuitton').classes('cardtext')
+                                ui.label('Seoul, South Korea').classes('cardtext')
+                                ui.button('Fashion Business Management')
+                                ui.button('Graduate')
+                                ui.button('English')
 
                     # internship 4
                     with ui.link(target='https://www.superookie.com/jobs/6620d4568b129f64f86e6912'):
                         with ui.card().tight().classes('right_bar border p-1'):
                             ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\tiktok.webp')
                             with ui.card_section():
-                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                                ui.button.default_props('rounded outline')
+                                ui.label('Retail Management Trainee / Louis Vuitton').classes('cardtext')
+                                ui.label('Seoul, South Korea').classes('cardtext')
+                                ui.button('Fashion Business Management')
+                                ui.button('Graduate')
+                                ui.button('English')
 
                 with ui.grid(columns='1fr 1fr').classes('internships_wrapper'):
                     
@@ -512,15 +527,23 @@ footer > div{
                         with ui.link(target='https://www.peoplenjob.com/jobs/5620255?type=intern'):
                             ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\innomotics.png')
                             with ui.card_section():
-                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
-
+                                ui.button.default_props('rounded outline')
+                                ui.label('Retail Management Trainee / Louis Vuitton').classes('cardtext')
+                                ui.label('Seoul, South Korea').classes('cardtext')
+                                ui.button('Fashion Business Management')
+                                ui.button('Graduate')
+                                ui.button('English')
                     # internship 6
                     with ui.link(target='https://sunykoreacdc.youcanbook.me/'):
                         with ui.card().tight().classes('right_bar border p-1'):
                             ui.image('C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\header.jpg')
                             with ui.card_section():
-                                ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
-                    
+                                ui.button.default_props('rounded outline')
+                                ui.label('Retail Management Trainee / Louis Vuitton').classes('cardtext')
+                                ui.label('Seoul, South Korea').classes('cardtext')
+                                ui.button('Fashion Business Management')
+                                ui.button('Graduate')
+                                ui.button('English')
 
         # footer
         with ui.grid(columns='1fr').classes('w-full'):
