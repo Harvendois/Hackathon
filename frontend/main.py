@@ -497,9 +497,12 @@ footer > div{
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\deloitte-logo.png"
                         )
                         with ui.card_section():
-                            ui.label(
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ..."
-                            )
+                            ui.button.default_props("rounded outline")
+                            ui.button("Fashion Business Management")
+                            ui.button("~04/30")
+                            ui.button("Graduate")
+                            ui.button("English")
+                            ui.button("Korean")
 
             with ui.grid(columns="1fr 1fr").classes("internships_wrapper"):
                 # internship 3
@@ -511,9 +514,12 @@ footer > div{
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\lg.png"
                         )
                         with ui.card_section():
-                            ui.label(
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ..."
-                            )
+                            ui.button.default_props("rounded outline")
+                            ui.button("Fashion Business Management")
+                            ui.button("~04/30")
+                            ui.button("Graduate")
+                            ui.button("English")
+                            ui.button("Korean")
 
                 # internship 4
                 with ui.link(
@@ -524,9 +530,12 @@ footer > div{
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\tiktok.webp"
                         )
                         with ui.card_section():
-                            ui.label(
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ..."
-                            )
+                            ui.button.default_props("rounded outline")
+                            ui.button("Fashion Business Management")
+                            ui.button("~04/30")
+                            ui.button("Graduate")
+                            ui.button("English")
+                            ui.button("Korean")
 
             with ui.grid(columns="1fr 1fr").classes("internships_wrapper"):
                 # internship 5
@@ -538,9 +547,12 @@ footer > div{
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\innomotics.png"
                         )
                         with ui.card_section():
-                            ui.label(
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ..."
-                            )
+                            ui.button.default_props("rounded outline")
+                            ui.button("Fashion Business Management")
+                            ui.button("~04/30")
+                            ui.button("Graduate")
+                            ui.button("English")
+                            ui.button("Korean")
 
                 # internship 6
                 with ui.link(target="https://sunykoreacdc.youcanbook.me/"):
@@ -549,9 +561,12 @@ footer > div{
                             "C:\\Users\\Jungha Cho\\git\\Hackathon\\frontend\\images\\header.jpg"
                         )
                         with ui.card_section():
-                            ui.label(
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ..."
-                            )
+                            ui.button.default_props("rounded outline")
+                            ui.button("Fashion Business Management")
+                            ui.button("~04/30")
+                            ui.button("Graduate")
+                            ui.button("English")
+                            ui.button("Korean")
 
     # footer
     with ui.grid(columns="1fr").classes("w-full"):
