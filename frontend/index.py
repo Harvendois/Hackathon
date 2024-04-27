@@ -16,6 +16,8 @@ def init(fastapi_app: FastAPI) -> None:
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
         <link rel="icon" href="images/logo.png" type="image/icon type">
 
         <style>
@@ -77,9 +79,12 @@ def init(fastapi_app: FastAPI) -> None:
             }
             .left_bar{
                 height: 90vh;
+                margin-top: 10vh;
+                position: sticky;
+                top: 15vh;
             }
             .right_bar{
-                height: 30vh;
+                height: 50vh;
             }
             .internship_wrapper{
                 
@@ -96,6 +101,7 @@ def init(fastapi_app: FastAPI) -> None:
                 text-align: center;
                 font-weight: bold;
                 font-size: 20px;
+                max-height: 5vh;
             }
                          
             .self_description, #academic_description{
@@ -392,6 +398,9 @@ footer > div{
        # navigation bar
         with ui.grid(columns='1fr').classes('w-full nav_bar'):
             
+            async def getDate():
+                time =  await ui.run_javascript('new Date().toLocaleString()')
+                return time
             ui.html('''<nav class="navbar navbar-expand-md" style="position:fixed; left: 20px; background-color: rgba(255,255,255,0.9)">
         
         <!-- Toggler/collapsibe Button -->
@@ -408,6 +417,7 @@ footer > div{
                 <li class="nav-item" onclick="scrollToSection('#projects')">Register Internship</li>
                 <li class="nav-item" onclick="scrollToSection('#experience')">My Page</li>                    
             </ul>
+            
         </div>
     </nav>''')
 
@@ -499,8 +509,7 @@ footer > div{
         # main content
         with ui.grid(columns='1fr 3fr').classes('w-full gap-5'):
             # tabs section
-            with ui.grid(rows='60px 1fr 1fr 1fr 1fr 1fr 1fr').classes('gap-2 left_bar'):
-                ui.html('<div class="" style="font-size:30px; text-align:center;">Tabs</div>').classes('')
+            with ui.grid(rows='1fr 1fr 1fr 1fr 1fr ').classes('gap-2 left_bar'):
     
                 ui.html('<div class="tabs" >Internships</div>').classes('border p-1')
                 ui.html('<div class="tabs" >Jobs</div>').classes('border p-1')
@@ -510,24 +519,49 @@ footer > div{
 
             # internships section
             with ui.grid(rows='60px 1fr 1fr 1fr').classes('gap-3 internship_wrapper'):
-                
                 ui.html('<div class="" style="font-size:30px; text-align:center">Internship Posts</div>').classes('')
-                ui.html('''<div class="internships" style="font-size:30px;">
-                        
-                <div class="project_wrapper">
-                    <div class="projects" id="project2">
-                    </div>
-                    <div class="project_hover" id="project2_hover">
-                        <span class="project_text">Group Project done with KOSMO teammates</span> 
-                        <button type="button" class="btn btn-outline-info" id="project2_button" href="#">Visit Website</button>
-                    </div>
-                </div>
+                with ui.grid(columns='1fr 1fr').classes('internships_wrapper'):
+                    
+                    # internship 1
+                    with ui.card().tight().classes('right_bar border p-1'):
+                        ui.image('https://picsum.photos/id/684/640/360')
+                        with ui.card_section():
+                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
 
-                        </div>''').classes('right_bar border p-1')
-                ui.html('<div class="internships" style="font-size:30px;">3</div>').classes('right_bar border p-1')
-                ui.html('<div class="internships" style="font-size:30px;">4</div>').classes('right_bar border p-1')
+                    # internship 2
+                    with ui.card().tight().classes('right_bar border p-1'):
+                        ui.image('https://picsum.photos/id/684/640/360')
+                        with ui.card_section():
+                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                    
+                with ui.grid(columns='1fr 1fr').classes('internships_wrapper'):
+                    
+                    # internship 3
+                    with ui.card().tight().classes('right_bar border p-1'):
+                        ui.image('https://picsum.photos/id/684/640/360')
+                        with ui.card_section():
+                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
 
-        
+                    # internship 4
+                    with ui.card().tight().classes('right_bar border p-1'):
+                        ui.image('https://picsum.photos/id/684/640/360')
+                        with ui.card_section():
+                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+
+                with ui.grid(columns='1fr 1fr').classes('internships_wrapper'):
+                    
+                    # internship 5
+                    with ui.card().tight().classes('right_bar border p-1'):
+                        ui.image('https://picsum.photos/id/684/640/360')
+                        with ui.card_section():
+                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+
+                    # internship 6
+                    with ui.card().tight().classes('right_bar border p-1'):
+                        ui.image('https://picsum.photos/id/684/640/360')
+                        with ui.card_section():
+                            ui.label('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ...')
+                    
 
         # footer
         with ui.grid(columns='1fr').classes('w-full'):
