@@ -1,50 +1,23 @@
-# from typing import Optional
+from fastapi import Depends, HTTPException, status
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+from starlette.requests import Request
 
-# from fastapi import Depends, Path
-# from sqlalchemy.orm import Session
-# from starlette.requests import Request
-# from settings.db import get_db_sess
-
-# from app.models import Admin, Customer
-# from app.utils.s3 import S3Wrapper
+from backend.models.admin import Admin
+from backend.settings.db import get_db_sess
 
 
-# def get_admin(request: Request, db: Session = Depends(get_db_sess)) -> Admin:
-#     admin = db.query(Admin).filter_by(id=request.state.user_id).one_or_none()
-#     if admin is None:
-#         raise APIException(
-#             APIExceptionErrorCodes.OBJECT_NOT_FOUND,
-#             message="Admin Not Found",
-#         )
-#     return admin
+def get_admin(request: Request, db: Session = Depends(get_db_sess)) -> Admin:
+    admin: Admin = (
+        db.execute(select(Admin).where(Admin.user_id == request.state.user_id))
+        .scalars()
+        .one_or_none()
+    )
 
+    if admin is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Admin Not Found",
+        )
 
-# def check_super_admin_status(
-#     admin: Admin = Depends(get_admin),
-#     db: Session = Depends(get_db_sess),
-# ) -> Admin:
-#     if not admin.is_super_admin:
-#         raise APIException(
-#             APIExceptionErrorCodes.FORBIDDEN,
-#             message="Not Super Admin",
-#         )
-
-
-# def get_customer_and_check_existence(
-#     db: Session = Depends(get_db_sess),
-#     customer_id: Optional[int] = Path(..., example="1"),
-# ) -> Customer:
-#     customer = db.query(Customer).get(customer_id)
-
-#     if not customer:
-#         raise APIException(
-#             APIExceptionErrorCodes.OBJECT_NOT_FOUND,
-#             message="Customer Not Found",
-#             data=customer_id,
-#         )
-
-#     return customer
-
-
-# def get_s3_wrapper() -> S3Wrapper:
-#     return S3Wrapper()
+    return admin

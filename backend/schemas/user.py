@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from pydantic import BaseModel, EmailStr
 
 __all__ = [
@@ -11,8 +13,9 @@ __all__ = [
 
 
 class JWTAuthenticateUser(BaseModel):
-    id: int
+    id: UUID
     email: str
+    name: str
 
 
 class RefreshToken(BaseModel):
@@ -26,7 +29,7 @@ class UserOut(BaseModel):
 
 class UserTokenOut(BaseModel):
     token: str
-    user_id: int
+    user_id: UUID
     email: EmailStr
 
 

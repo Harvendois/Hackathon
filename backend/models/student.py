@@ -42,3 +42,6 @@ class Student(UUIDBase):
             student_id_card=student_id_card,
             user_id=user_id,
         )
+
+    def approve(self) -> None:
+        self.user.approve()

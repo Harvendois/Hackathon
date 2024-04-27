@@ -39,3 +39,6 @@ class User(UUIDBase):
             email=email,
             password=password,
         )
+
+    def approve(self) -> None:
+        self.verified = True

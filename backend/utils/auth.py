@@ -1,18 +1,19 @@
-import uuid
 from calendar import timegm
 from datetime import UTC, datetime, timedelta
 from typing import Optional
+from uuid import uuid4
 
 import bcrypt
 from fastapi import Header
-from jose import jwt
-from sqlalchemy import Select, select
+from jose import jwt  # type: ignore
+from sqlalchemy import Select, select, true
 from sqlalchemy.orm import Session
 
 from backend.exceptions.user import UserNotFound
 from backend.models.user import User
 from backend.schemas.user import JWTAuthenticateUser, UserCreateIn, UserIn
 from backend.settings.config import JWT_AUTH
+from backend.utils.logger import detailed_logging_factory
 
 
 def check_jwt(authorization: str = Header(...)):
@@ -39,12 +40,13 @@ def update_user_password(
     return user_obj
 
 
+@detailed_logging_factory()
 def authenticate(
     db: Session,
     user_login_data: UserIn,
 ) -> User:
     statement: Select = select(User).where(
-        User.email == user_login_data.email, User.verified is True
+        User.email == user_login_data.email, User.verified == true()
     )
 
     user: User = db.execute(statement).scalars().one_or_none()
@@ -76,14 +78,15 @@ def create_user(db: Session, user_register_data: UserCreateIn) -> User:
     return user
 
 
+@detailed_logging_factory()
 def create_access_token(
     user: JWTAuthenticateUser,
     expires_delta: Optional[timedelta] = None,
 ):
     to_encode = {
-        "id": user.id,
+        "id": str(user.id),
         "email": user.email,
-        "username": user.username,
+        "name": user.name,
         "exp": datetime.now(UTC) + expires_delta
         if expires_delta
         else datetime.now(UTC) + JWT_AUTH["JWT_EXPIRATION_DELTA"],
@@ -92,7 +95,7 @@ def create_access_token(
                 datetime.now(UTC) + JWT_AUTH["JWT_REFRESH_EXPIRATION_DELTA"]
             ).utctimetuple()
         ),
-        "jti": uuid.uuid4().hex,
+        "jti": uuid4().hex,
         "orig_iat": timegm(datetime.now(UTC).utctimetuple()),
         "iss": JWT_AUTH["JWT_ISSUER"],
     }
@@ -102,6 +105,7 @@ def create_access_token(
     return encoded_jwt
 
 
+@detailed_logging_factory()
 def refresh_access_token(db: Session, token: str):
     payload = jwt.decode(
         token,
@@ -116,7 +120,7 @@ def refresh_access_token(db: Session, token: str):
     orig_iat = payload.get("orig_iat")
     if orig_iat:
         # Verify expiration
-        now_timestamp = timegm(datetime.utcnow().utctimetuple())
+        now_timestamp = timegm(datetime.now(UTC).utctimetuple())
         if now_timestamp > payload["refresh_exp"]:
             return None
         return create_access_token(user)
